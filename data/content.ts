@@ -22,7 +22,7 @@ export const hero = {
 };
 
 export const about = {
-  bio: "I study Finance and Computer Information Systems at ASU's W.P. Carey School of Business and graduate with a 3.80 GPA. My background spans venture capital due diligence, equity compensation modeling at Equity Methods, and corporate finance at L'Oreal. I spend most of my time at the intersection of investment analysis and quantitative tools, building financial models during the day and Python systems at night. I am most energized working on problems that require both analytical rigor and technical execution.",
+  bio: "I graduated from ASU's W.P. Carey School of Business with a B.S. in Finance and Computer Information Systems and a 3.80 GPA. My background spans venture capital due diligence, equity compensation modeling at Equity Methods, and corporate finance at L'Oreal. I am most drawn to consumer and infrastructure companies building through network effects. I spend most of my time at the intersection of investment analysis and quantitative systems, building financial models during the day and Python tools at night.",
   education: {
     institution: "Arizona State University",
     school: "W.P. Carey School of Business",
@@ -91,7 +91,7 @@ export const projects = [
   {
     title: "USV Portfolio Network Map",
     description:
-      "An interactive force-directed graph mapping 42 Union Square Ventures portfolio companies as nodes, sized by total funding and colored by sector, with gold lines connecting founders who share prior employers. Built as a work product before applying to USV's analyst program, with four original investment memos on companies not yet in the portfolio.",
+      "I built this research tool before applying to USV's analyst program to understand how the firm thinks about networks. The site maps all 42 portfolio companies as a force-directed graph, sized by funding and colored by sector, with connections between founders who share prior employers. Includes a filterable explorer of 87 founders by university and prior employer, and four original investment memos on companies not yet in the portfolio.",
     tags: ["React", "Next.js", "D3.js", "Framer Motion", "GSAP"],
     live: "https://usv-network-map.vercel.app",
     code: "https://github.com/smodi13/usv-network-map",
