@@ -85,8 +85,22 @@ export default function Nav() {
             SM
           </button>
 
-          {/* Desktop links */}
+          {/* Desktop links + resume */}
           <nav className="hidden md:flex items-center gap-8">
+            <a
+              href="/resume.pdf"
+              download
+              className="font-dm-mono tracking-wider transition-colors duration-200 border px-3 py-1.5 rounded-sm"
+              style={{
+                fontSize: "11px",
+                color: scrolled ? "var(--p-accent)" : "#ffffff",
+                borderColor: scrolled
+                  ? "rgba(26,26,24,0.35)"
+                  : "rgba(255,255,255,0.35)",
+              }}
+            >
+              Resume
+            </a>
             {links.map((link) => {
               const isActive = active === link.href.replace("#", "");
               return (

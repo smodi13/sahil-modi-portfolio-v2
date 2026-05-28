@@ -151,6 +151,17 @@ export default function Hero() {
             </motion.a>
           </motion.div>
 
+          {/* Resume download */}
+          <motion.a
+            variants={itemVariants}
+            href="/resume.pdf"
+            download
+            className="font-dm-mono flex items-center gap-1.5 transition-opacity duration-200 hover:opacity-75"
+            style={{ fontSize: "11px", color: "rgba(255,255,255,0.5)" }}
+          >
+            Download Resume ↓
+          </motion.a>
+
           {/* Stats */}
           <motion.div
             variants={itemVariants}

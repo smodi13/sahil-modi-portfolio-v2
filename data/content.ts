@@ -104,9 +104,22 @@ export const projects = [
     code: "https://github.com/smodi13",
   },
   {
-    title: "Automated Finance Job Search Tool",
+    title: "Cross Creek Advisors Portfolio Tracker",
     description:
-      "A Python scraper aggregating entry-level finance and VC job listings daily from LinkedIn, Indeed, and five niche industry job boards, deduplicating across sources using SQLite and delivering a formatted HTML digest via automated daily email.",
+      "A research dashboard built before applying to Cross Creek's analyst program, tracking six portfolio companies with estimated EV/ARR multiples benchmarked against public sector comps. Includes metric cards mirroring what an analyst tracks daily, a holdings table with valuation methodology, and analyst notes on each company sourced from public filings and Crunchbase.",
+    tags: [
+      "React",
+      "Financial Analysis",
+      "Portfolio Monitoring",
+      "Comparable Company Analysis",
+    ],
+    confidential: true,
+    confidentialLabel: "Built as application work product, available on request",
+  },
+  {
+    title: "Finance Intelligence Aggregator",
+    description:
+      "A daily data pipeline that scrapes job listings and market signals across LinkedIn, Indeed, and five niche VC and finance job boards, deduplicates across sources using SQLite, and delivers a structured HTML digest via automated email. Full system architecture includes web scraping, database management, deduplication logic, and scheduled execution, built entirely with Claude Code.",
     tags: [
       "Python",
       "SQLite",
@@ -122,14 +135,6 @@ export const projects = [
       "A backtested quantitative momentum strategy using Python, analyzing historical price data and signal logic to evaluate risk-adjusted returns across market conditions. Modular codebase with configurable parameters for signal thresholds, position sizing, Sharpe ratio, max drawdown, and cumulative P and L visualization.",
     tags: ["Python", "pandas", "NumPy", "Backtesting", "Quantitative Finance"],
     code: "https://github.com/smodi13",
-  },
-  {
-    title: "ZDeploy",
-    description:
-      "A Forward Deployed Engineering simulation tool mirroring real IBM Z client deployment workflows across Pilot, Proof of Value, Production Readiness, and Value Realized stages. Includes an AI deployment assistant and automated playbook generator.",
-    tags: ["React", "Groq AI", "FDE Workflow", "Vite"],
-    live: "https://zdeploy.vercel.app",
-    code: "https://github.com/smodi13/zdeploy",
   },
   {
     title: "Calaveras Vineyards LBO Model",
