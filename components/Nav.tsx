@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
+import { personal } from "@/data/content";
+import IconLink from "@/components/IconLink";
+import { LinkedinIcon, GithubIcon, MailIcon } from "@/components/icons";
 
 const links = [
   { label: "Home", href: "/" },
@@ -11,6 +14,12 @@ const links = [
   { label: "Games", href: "/games" },
   { label: "Resume", href: "/resume" },
   { label: "Contact", href: "/contact" },
+];
+
+const socials = [
+  { label: "LinkedIn", href: personal.linkedin, external: true, icon: <LinkedinIcon /> },
+  { label: "GitHub", href: personal.github, external: true, icon: <GithubIcon /> },
+  { label: "Email", href: `mailto:${personal.email}`, external: false, icon: <MailIcon /> },
 ];
 
 export default function Nav() {
@@ -66,6 +75,27 @@ export default function Nav() {
               </Link>
             );
           })}
+
+          {/* Divider */}
+          <span
+            className="mx-1 h-4 w-px"
+            style={{ background: "var(--line-strong)" }}
+            aria-hidden="true"
+          />
+
+          {/* Social / contact icons */}
+          <div className="flex items-center">
+            {socials.map((s) => (
+              <IconLink
+                key={s.label}
+                href={s.href}
+                label={s.label}
+                icon={s.icon}
+                external={s.external}
+                tooltip="bottom"
+              />
+            ))}
+          </div>
         </div>
 
         {/* Mobile toggle */}
@@ -119,6 +149,24 @@ export default function Nav() {
                 </Link>
               </motion.div>
             ))}
+
+            <motion.div
+              className="flex items-center gap-3 mt-8"
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.06 * links.length + 0.05, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {socials.map((s) => (
+                <IconLink
+                  key={s.label}
+                  href={s.href}
+                  label={s.label}
+                  icon={s.icon}
+                  external={s.external}
+                  tooltip="top"
+                />
+              ))}
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

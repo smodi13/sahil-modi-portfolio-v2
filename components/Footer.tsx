@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { personal } from "@/data/content";
+import IconLink from "@/components/IconLink";
+import { LinkedinIcon, GithubIcon, MailIcon } from "@/components/icons";
 
 const nav = [
   { label: "Projects", href: "/projects" },
@@ -51,32 +53,27 @@ export default function Footer() {
           <p className="font-mono text-[11px]" style={{ color: "var(--subtle)" }}>
             © {year} Sahil Modi. Built with Next.js.
           </p>
-          <div className="flex gap-6 font-mono text-[11px]">
-            <a
+          <div className="flex items-center gap-1 -mr-2">
+            <IconLink
               href={personal.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[var(--gold)] transition-colors"
-              style={{ color: "var(--muted)" }}
-            >
-              LinkedIn ↗
-            </a>
-            <a
+              label="LinkedIn"
+              icon={<LinkedinIcon />}
+              external
+              tooltip="top"
+            />
+            <IconLink
               href={personal.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[var(--gold)] transition-colors"
-              style={{ color: "var(--muted)" }}
-            >
-              GitHub ↗
-            </a>
-            <a
+              label="GitHub"
+              icon={<GithubIcon />}
+              external
+              tooltip="top"
+            />
+            <IconLink
               href={`mailto:${personal.email}`}
-              className="hover:text-[var(--gold)] transition-colors"
-              style={{ color: "var(--muted)" }}
-            >
-              Email ↗
-            </a>
+              label="Email"
+              icon={<MailIcon />}
+              tooltip="top"
+            />
           </div>
         </div>
       </div>

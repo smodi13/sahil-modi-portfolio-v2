@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Project } from "@/data/projects";
+import { ArrowUpRightIcon, GithubIcon, LockIcon } from "@/components/icons";
 
 export default function ProjectCard({
   project,
@@ -63,9 +64,18 @@ export default function ProjectCard({
           style={{ borderColor: "var(--line)" }}
         >
           <span
-            className="font-mono text-[11px]"
+            className="flex items-center gap-1.5 font-mono text-[11px]"
             style={{ color: project.confidential ? "var(--subtle)" : "var(--muted)" }}
           >
+            <span className="[&>svg]:w-3.5 [&>svg]:h-3.5" aria-hidden="true">
+              {project.confidential ? (
+                <LockIcon />
+              ) : project.live ? (
+                <ArrowUpRightIcon />
+              ) : (
+                <GithubIcon />
+              )}
+            </span>
             {project.confidential
               ? "On request"
               : project.live

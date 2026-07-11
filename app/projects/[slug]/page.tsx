@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Reveal from "@/components/Reveal";
 import { projects, getProject } from "@/data/projects";
+import { ArrowUpRightIcon, GithubIcon, LockIcon } from "@/components/icons";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -92,9 +93,10 @@ export default async function ProjectDetail({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary"
+                aria-label={`${project.liveLabel ?? "Open live app"} (opens in a new tab)`}
               >
+                <ArrowUpRightIcon />
                 {project.liveLabel ?? "Open live app"}
-                <span className="btn-icon">↗</span>
               </a>
             )}
             {project.code && (
@@ -103,9 +105,10 @@ export default async function ProjectDetail({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-ghost"
+                aria-label="View source on GitHub (opens in a new tab)"
               >
+                <GithubIcon />
                 View source
-                <span className="btn-icon">↗</span>
               </a>
             )}
             {project.confidential && (
@@ -113,6 +116,7 @@ export default async function ProjectDetail({
                 className="btn btn-ghost"
                 style={{ cursor: "default", color: "var(--subtle)" }}
               >
+                <LockIcon />
                 {project.confidentialLabel}
               </span>
             )}

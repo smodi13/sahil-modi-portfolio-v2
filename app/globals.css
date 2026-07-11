@@ -127,6 +127,54 @@ a {
   background: rgba(169, 126, 40, 0.07);
 }
 
+/* ─── Icon link + tooltip (site-wide destination links) ─── */
+.icon-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  color: var(--muted);
+  transition: color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.icon-btn:hover {
+  color: var(--gold);
+  background: rgba(169, 126, 40, 0.1);
+}
+.icon-tooltip {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  margin-top: 9px;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--ink);
+  color: var(--on-dark);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.03em;
+  padding: 4px 9px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 70;
+  transition: opacity 0.18s var(--ease), transform 0.18s var(--ease);
+}
+.icon-tooltip.is-top {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: 9px;
+  transform: translateX(-50%) translateY(-4px);
+}
+.icon-link:hover .icon-tooltip,
+.icon-link:focus-visible .icon-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
 /* ─── Surface card ─── */
 .card {
   background: var(--surface);
