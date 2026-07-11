@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sahil Modi — Portfolio
 
-## Getting Started
+A multi-page personal portfolio built with Next.js (App Router), Tailwind v4,
+Framer Motion, and GSAP. Dark editorial design, corner-bracket accents, a
+horizontal timeline, scroll-triggered reveals, and a Games section with six
+playable interactive tools.
 
-First, run the development server:
+## Structure
+
+- `/` — Home: hero with mouse-follow spotlight, positioning, timeline, featured work, skills, CTA
+- `/projects` and `/projects/[slug]` — project index + detail writeups
+- `/games` and `/games/[slug]` — six functional games (LBO speed-solve, reverse line movement, auctions, cap-table chess, market sizing, RPS vs a learning agent)
+- `/resume` — embedded PDF viewer + download (`public/resume.pdf`)
+- `/contact` — email, LinkedIn, GitHub
+
+Content lives in `data/` (`content.ts`, `projects.ts`, `games.ts`). Shared
+design tokens are in `app/globals.css`.
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev     # http://localhost:3000
+npm run build   # production build
+npm start       # serve the build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Updating the resume
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The resume shown in the embedded viewer and download button is
+`public/resume.pdf`. Replace that file with an updated export to change it — the
+`/resume` page reads it directly.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Removing the Vercel look (custom domain)
 
-## Learn More
+This project deploys to Vercel. To drop the `*.vercel.app` URL **and** remove the
+Vercel badge, connect a custom domain:
 
-To learn more about Next.js, take a look at the following resources:
+1. Buy a domain (Vercel sells them directly, or use Namecheap / Cloudflare). `sahilmodi.com` is ideal if available.
+2. In the Vercel dashboard, open this project → **Settings → Domains → Add**.
+3. Enter your domain and follow the DNS instructions (either point nameservers to Vercel, or add the `A` / `CNAME` records Vercel shows).
+4. Once verified, set it as the **Primary Domain**. The custom domain removes the `.vercel.app` URL and the Vercel badge, and Vercel provisions HTTPS automatically.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Default Next.js/Vercel template assets (favicon, `next.svg`, `vercel.svg`) have
+already been removed; the favicon is the branded `app/icon.svg` monogram.

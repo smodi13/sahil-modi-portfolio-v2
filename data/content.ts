@@ -42,6 +42,17 @@ export const about = {
 
 export const experience = [
   {
+    company: "Carta",
+    role: "Finance and Equity Analyst",
+    dates: "August 2024 to May 2025",
+    location: "Tempe, AZ",
+    bullets: [
+      "Supported finance and equity analysis for private-market clients, building a working understanding of how startups manage fundraising, ownership, and employee equity",
+      "Used AI tools and internal workflow automation to improve research, documentation, and recurring finance processes, and built internal bots to remove repetitive manual work",
+      "Gained hands-on exposure to cap tables, valuations, and startup financial operations across the private-company ecosystem, improving turnaround time and team consistency",
+    ],
+  },
+  {
     company: "ASU",
     role: "Venture Capital Analyst",
     dates: "August 2024 to May 2025",
@@ -84,65 +95,6 @@ export const experience = [
       "Created monthly financial reporting packages tracking budget vs. actuals across departments, equipping leadership with actionable insights to optimize allocation strategies",
       "Performed reconciliations, resolved discrepancies, and supported monthly close activities, ensuring timely and accurate reporting across nonprofit financial operations",
     ],
-  },
-];
-
-export const projects = [
-  {
-    title: "USV Portfolio Network Map",
-    description:
-      "I built this research tool before applying to USV's analyst program to understand how the firm thinks about networks. The site maps all 42 portfolio companies as a force-directed graph, sized by funding and colored by sector, with connections between founders who share prior employers. Includes a filterable explorer of 87 founders by university and prior employer, and four original investment memos on companies not yet in the portfolio.",
-    tags: ["React", "Next.js", "D3.js", "Framer Motion", "GSAP"],
-    live: "https://usv-network-map.vercel.app",
-    code: "https://github.com/smodi13/usv-network-map",
-  },
-  {
-    title: "Sports Betting Reverse Line Movement Tracker",
-    description:
-      "A Python daemon that polls live sports odds every 15 minutes via The Odds API, detects reverse line movement signals across all US sports, stores flagged events in SQLite, and surfaces a CLI alert system, deployed to a cloud server running continuously via systemd.",
-    tags: ["Python", "SQLite", "REST API", "Linux", "systemd"],
-    code: "https://github.com/smodi13",
-  },
-  {
-    title: "Cross Creek Advisors Portfolio Tracker",
-    description:
-      "A research dashboard built before applying to Cross Creek's analyst program, tracking six portfolio companies with estimated EV/ARR multiples benchmarked against public sector comps. Includes metric cards mirroring what an analyst tracks daily, a holdings table with valuation methodology, and analyst notes on each company sourced from public filings and Crunchbase.",
-    tags: [
-      "React",
-      "Financial Analysis",
-      "Portfolio Monitoring",
-      "Comparable Company Analysis",
-    ],
-    confidential: true,
-    confidentialLabel: "Built as application work product, available on request",
-  },
-  {
-    title: "Finance Intelligence Aggregator",
-    description:
-      "A daily data pipeline that scrapes job listings and market signals across LinkedIn, Indeed, and five niche VC and finance job boards, deduplicates across sources using SQLite, and delivers a structured HTML digest via automated email. Full system architecture includes web scraping, database management, deduplication logic, and scheduled execution, built entirely with Claude Code.",
-    tags: [
-      "Python",
-      "SQLite",
-      "BeautifulSoup",
-      "Email Automation",
-      "Claude Code",
-    ],
-    code: "https://github.com/smodi13",
-  },
-  {
-    title: "Quantitative Momentum Trading Engine",
-    description:
-      "A backtested quantitative momentum strategy using Python, analyzing historical price data and signal logic to evaluate risk-adjusted returns across market conditions. Modular codebase with configurable parameters for signal thresholds, position sizing, Sharpe ratio, max drawdown, and cumulative P and L visualization.",
-    tags: ["Python", "pandas", "NumPy", "Backtesting", "Quantitative Finance"],
-    code: "https://github.com/smodi13",
-  },
-  {
-    title: "Calaveras Vineyards LBO Model",
-    description:
-      "A mid-market leveraged buyout case study using anonymized real-world deal data, focused on capital structure, returns analysis, and sponsor strategy. Full Excel LBO model evaluating IRR, MOIC, and cash flows under multiple operating and exit scenarios incorporating a sources and uses table, debt schedule, and performance sensitivities.",
-    tags: ["Excel", "LBO Modeling", "Private Equity", "IRR", "MOIC"],
-    confidential: true,
-    confidentialLabel: "Confidential, available on request",
   },
 ];
 
@@ -215,3 +167,48 @@ export const contact = {
   subline:
     "I am actively looking for investment analyst, portfolio operations, and venture capital roles. If you are building a team or want to discuss a project, reach out.",
 };
+
+export const timeline = [
+  {
+    period: "2023",
+    title: "Accounting Intern",
+    org: "ASU Enterprise Partners",
+    note: "Monthly reporting packages, reconciliations, and close support across nonprofit finance operations.",
+  },
+  {
+    period: "Jun 2024",
+    title: "Finance Intern",
+    org: "L'Oréal",
+    note: "Automated invoice processing, cutting processing time 30%, plus reconciliations and audit prep.",
+  },
+  {
+    period: "Aug 2024",
+    title: "Finance & Equity Analyst",
+    org: "Carta",
+    note: "Equity and cap-table analysis for private-market clients; built internal bots to remove manual work.",
+  },
+  {
+    period: "Aug 2024",
+    title: "Venture Capital Analyst",
+    org: "ASU",
+    note: "Due diligence on 10+ startups, TAM/SAM/SOM sizing, and IRR models feeding investment-committee calls.",
+  },
+  {
+    period: "Dec 2024",
+    title: "Equity Comp Externship",
+    org: "Equity Methods",
+    note: "Fair-value RSU and option models for Fortune 500 case studies using SAS and Excel.",
+  },
+  {
+    period: "May 2025",
+    title: "B.S. Finance & CIS",
+    org: "ASU · W.P. Carey · Barrett Honors",
+    note: "Graduated with a 3.80 GPA from the Barrett Honors College.",
+  },
+  {
+    period: "2025",
+    title: "Independent build sprint",
+    org: "Work samples & tools",
+    note: "Shipped the USV Network Map, Frontier Tech Thesis Engine, trading systems, and automation pipelines.",
+  },
+];

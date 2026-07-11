@@ -1,206 +1,99 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { personal, hero } from "@/data/content";
-import gsap from "gsap";
+
+const container = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.09, delayChildren: 0.08 } },
+};
+const item = {
+  hidden: { opacity: 0, y: 22, filter: "blur(6px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
 
 export default function Hero() {
-  const bgRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const { ScrollTrigger } = require("gsap/ScrollTrigger");
-    gsap.registerPlugin(ScrollTrigger);
-
-    if (bgRef.current) {
-      gsap.to(bgRef.current, {
-        y: "30%",
-        ease: "none",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-    }
-  }, []);
-
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: { staggerChildren: 0.12, delayChildren: 0.1 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
-    },
-  };
-
-  const statVariants = {
-    hidden: { opacity: 0, y: 16 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-        delay: 0.4 + i * 0.1,
-      },
-    }),
-  };
-
   return (
-    <section
-      ref={containerRef}
-      id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
-      style={{ backgroundColor: "var(--p-dark)" }}
-    >
-      {/* Parallax background layer */}
+    <section className="relative min-h-dvh flex flex-col items-center justify-center overflow-hidden px-6">
+      {/* Ambient radial glow */}
       <div
-        ref={bgRef}
+        aria-hidden="true"
         className="absolute inset-0 pointer-events-none"
-        style={{ willChange: "transform" }}
+        style={{
+          background:
+            "radial-gradient(60% 50% at 50% 34%, rgba(169,126,40,0.08), transparent 68%)",
+        }}
+      />
+
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 flex flex-col items-center text-center max-w-4xl"
       >
-        <div className="noise-overlay" />
-        <div className="ledger-lines" />
-      </div>
+        <motion.span variants={item} className="eyebrow mb-8">
+          <span className="pulse-dot" />
+          {personal.availability}
+        </motion.span>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 pt-24 pb-20 flex flex-col items-center text-center">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col items-center gap-6"
-        >
-          {/* Availability badge */}
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center gap-2 font-dm-mono text-xs tracking-widest uppercase"
-            style={{ color: "rgba(255,255,255,0.5)" }}
+        {/* Bracketed name */}
+        <motion.div variants={item} className="relative px-8 py-4">
+          <span className="bracket-corner bracket-tl" style={{ top: -6, left: -6 }} aria-hidden />
+          <span className="bracket-corner bracket-tr" style={{ top: -6, right: -6 }} aria-hidden />
+          <span className="bracket-corner bracket-bl" style={{ bottom: -6, left: -6 }} aria-hidden />
+          <span className="bracket-corner bracket-br" style={{ bottom: -6, right: -6 }} aria-hidden />
+          <h1
+            className="font-display font-extrabold leading-[0.92] tracking-tight"
+            style={{ fontSize: "clamp(58px, 12vw, 148px)", color: "var(--ink)" }}
           >
-            <span className="pulse-dot" />
-            {personal.availability}
-          </motion.div>
-
-          {/* Name */}
-          <motion.h1
-            variants={itemVariants}
-            className="font-syne font-bold text-white leading-none tracking-tight"
-            style={{ fontSize: "clamp(60px, 10vw, 104px)" }}
-          >
-            {personal.name}
-          </motion.h1>
-
-          {/* Subheadline */}
-          <motion.p
-            variants={itemVariants}
-            className="font-inter max-w-2xl leading-relaxed"
-            style={{
-              color: "rgba(255,255,255,0.55)",
-              fontSize: "clamp(15px, 1.8vw, 18px)",
-            }}
-          >
-            {personal.tagline}
-          </motion.p>
-
-          {/* CTA buttons */}
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center gap-4 flex-wrap justify-center mt-2"
-          >
-            <motion.button
-              onClick={() => {
-                const el = document.getElementById("projects");
-                el?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="font-inter font-medium text-sm px-6 py-3 rounded-sm transition-all duration-200"
-              style={{
-                backgroundColor: "#ffffff",
-                color: "var(--p-dark)",
-              }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              View my work
-            </motion.button>
-
-            <motion.a
-              href={personal.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-inter font-medium text-sm px-6 py-3 rounded-sm border transition-all duration-200"
-              style={{
-                borderColor: "rgba(255,255,255,0.3)",
-                color: "#ffffff",
-              }}
-              whileHover={{
-                scale: 1.02,
-                borderColor: "rgba(255,255,255,0.6)",
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              LinkedIn
-            </motion.a>
-          </motion.div>
-
-          {/* Resume download */}
-          <motion.a
-            variants={itemVariants}
-            href="/resume.pdf"
-            download
-            className="font-dm-mono flex items-center gap-1.5 transition-opacity duration-200 hover:opacity-75"
-            style={{ fontSize: "11px", color: "rgba(255,255,255,0.5)" }}
-          >
-            Download Resume ↓
-          </motion.a>
-
-          {/* Stats */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap items-center justify-center gap-3 mt-6"
-          >
-            {hero.stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                custom={i}
-                variants={statVariants}
-                initial="hidden"
-                animate="visible"
-                className="font-dm-mono text-xs px-4 py-2 rounded-sm"
-                style={{
-                  color: "var(--p-gold)",
-                  backgroundColor: "rgba(201,168,76,0.08)",
-                  border: "1px solid rgba(201,168,76,0.2)",
-                }}
-              >
-                {stat.label}
-              </motion.div>
-            ))}
-          </motion.div>
+            Sahil Modi
+          </h1>
         </motion.div>
-      </div>
+
+        <motion.p
+          variants={item}
+          className="font-sans mt-8 max-w-2xl leading-relaxed"
+          style={{ color: "var(--muted)", fontSize: "clamp(15px, 1.9vw, 19px)" }}
+        >
+          {personal.tagline}.
+        </motion.p>
+
+        <motion.div variants={item} className="flex flex-wrap items-center justify-center gap-3 mt-10">
+          <Link href="/projects" className="btn btn-primary">
+            View my work
+            <span className="btn-icon">→</span>
+          </Link>
+          <Link href="/games" className="btn btn-ghost">
+            Play the games
+            <span className="btn-icon">↗</span>
+          </Link>
+        </motion.div>
+
+        {/* Stats */}
+        <motion.div
+          variants={item}
+          className="flex flex-wrap items-center justify-center gap-2.5 mt-12"
+        >
+          {hero.stats.map((s) => (
+            <span key={s.label} className="tag tnum">
+              {s.label}
+            </span>
+          ))}
+        </motion.div>
+      </motion.div>
 
       {/* Scroll caret */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 bounce-slow">
-        <svg
-          width="20"
-          height="28"
-          viewBox="0 0 20 28"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          style={{ opacity: 0.4 }}
-        >
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bounce-slow" aria-hidden="true">
+        <svg width="18" height="26" viewBox="0 0 20 28" fill="none">
           <path
             d="M10 1v18M10 19l-6-6M10 19l6-6"
-            stroke="white"
+            stroke="var(--subtle)"
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"

@@ -1,78 +1,83 @@
-"use client";
-
+import Link from "next/link";
 import { personal } from "@/data/content";
 
+const nav = [
+  { label: "Projects", href: "/projects" },
+  { label: "Games", href: "/games" },
+  { label: "Resume", href: "/resume" },
+  { label: "Contact", href: "/contact" },
+];
+
 export default function Footer() {
+  const year = new Date().getFullYear();
   return (
     <footer
-      className="py-8 text-center"
-      style={{
-        backgroundColor: "var(--p-dark)",
-        borderTop: "1px solid rgba(255,255,255,0.06)",
-      }}
+      className="relative z-10 border-t"
+      style={{ borderColor: "var(--line)", background: "var(--bg-soft)" }}
     >
-      <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p
-          className="font-dm-mono text-xs"
-          style={{ color: "rgba(255,255,255,0.25)" }}
+      <div className="max-w-6xl mx-auto px-6 py-14">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+          <div>
+            <div className="font-display font-bold text-2xl tracking-tight">
+              Sahil Modi<span style={{ color: "var(--gold)" }}>.</span>
+            </div>
+            <p
+              className="font-sans text-sm mt-2 max-w-xs leading-relaxed"
+              style={{ color: "var(--muted)" }}
+            >
+              Finance & CIS. Building investment tools where quantitative
+              research meets software.
+            </p>
+          </div>
+
+          <nav className="flex flex-wrap gap-x-8 gap-y-3" aria-label="Footer">
+            {nav.map((n) => (
+              <Link
+                key={n.href}
+                href={n.href}
+                className="font-mono text-xs transition-colors duration-200 hover:text-[var(--gold)]"
+                style={{ color: "var(--muted)" }}
+              >
+                {n.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        <div
+          className="mt-12 pt-6 border-t flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between"
+          style={{ borderColor: "var(--line)" }}
         >
-          Sahil Modi, 2025
-        </p>
-
-        <div className="flex items-center gap-5">
-          <a
-            href={personal.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-opacity duration-200 hover:opacity-70"
-            aria-label="GitHub"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              style={{ color: "rgba(255,255,255,0.35)" }}
+          <p className="font-mono text-[11px]" style={{ color: "var(--subtle)" }}>
+            © {year} Sahil Modi. Built with Next.js.
+          </p>
+          <div className="flex gap-6 font-mono text-[11px]">
+            <a
+              href={personal.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[var(--gold)] transition-colors"
+              style={{ color: "var(--muted)" }}
             >
-              <path
-                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                fill="currentColor"
-              />
-            </svg>
-          </a>
-
-          <a
-            href={personal.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-opacity duration-200 hover:opacity-70"
-            aria-label="LinkedIn"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              style={{ color: "rgba(255,255,255,0.35)" }}
+              LinkedIn ↗
+            </a>
+            <a
+              href={personal.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[var(--gold)] transition-colors"
+              style={{ color: "var(--muted)" }}
             >
-              <path
-                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <circle
-                cx="4"
-                cy="4"
-                r="2"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              />
-            </svg>
-          </a>
+              GitHub ↗
+            </a>
+            <a
+              href={`mailto:${personal.email}`}
+              className="hover:text-[var(--gold)] transition-colors"
+              style={{ color: "var(--muted)" }}
+            >
+              Email ↗
+            </a>
+          </div>
         </div>
       </div>
     </footer>
